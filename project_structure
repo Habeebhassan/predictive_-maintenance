@@ -1,0 +1,21 @@
+@Author  : Habeeb Hassan - Machine Learning Engineer
+dataset                         <- Data folder
+    vibration.csv
+    AirQuality.csv
+
+models                          <- Trained models
+    multi_output.pth 
+
+docker                          <- docker file 
+    Dockerfile
+
+app.py                          <- Flask
+
+predictive_maintenance.ipynb    <- jupyter notebook to train model
+
+templates                       <- html files
+    result.html
+    index.html
+
+static                          <- javascript and CSS files
+    visualization.js

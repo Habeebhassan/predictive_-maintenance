@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Prediction Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='visualization.js') }}"></script>
+
+</head>
+<body>
+    <h1>Prediction Results</h1>
+
+    <h2>Regression Predictions</h2>
+    <p>{{ prediction[0] }}</p>
+
+    <h2>Classification Predictions</h2>
+    <p>{{ prediction[1] }}</p>
+
+<!-- displays anomalies_vibration -->
+    <!-- {% if anomalies_vibration %}
+    <h2>Anomalies Detected in Vibration Data</h2>
+    <ul>
+        {% for anomaly in anomalies_vibration %}
+            <li>{{ anomaly }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} -->
+
+    <!-- displays anomalies_gas -->
+    {% if anomalies_gas %}
+    <h2>Anomalies Detected in Gas Data</h2>
+    <ul>
+        {% for anomaly in anomalies_gas %}
+            <li>{{ anomaly }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h1>Gas Sensor Data</h1>
+    <canvas id="gasChart" width="400" height="200"></canvas>
+
+    <h1>Vibration Sensor Data</h1>
+    <canvas id="vibrationChart" width="400" height="200"></canvas>
+
+    <h2>Anomalies Detected in Vibration Data</h2>
+    <canvas id="scatterPlot" width="400" height="200"></canvas>
+
+
+    <script>
+        // Assuming gas_data and vibration_data are passed from Flask
+        updateCharts({{ gas_data | tojson }}, {{ vibration_data | tojson }}, {{ prediction[0].tolist() }});
+        createScatterPlot({{ prediction[0].tolist() }});
+    </script>
+
+</body>
+</html>
