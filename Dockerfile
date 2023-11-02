@@ -7,6 +7,7 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 
 # Installing Python packages through requirements.txt file
+RUN pip install uvicorn==0.15.0
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt || true
 
 # Copy the rest of your application files (server.py, models, HTML, etc.) into the container
