@@ -1,3 +1,11 @@
+metadata
+license: apache-2.0
+title: predictive_maintenance
+sdk: docker
+emoji: 🔥
+colorFrom: green
+colorTo: purple
+
 # Project Title: Predictive Maintenance in the oil and Gas Industry using Machine Learning
 
 # Objectives
