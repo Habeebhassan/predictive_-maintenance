@@ -7,7 +7,7 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 
 # Installing Python packages through requirements.txt file
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt || true
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Copy the rest of your application files (server.py, models, HTML, etc.) into the container
 COPY . .
