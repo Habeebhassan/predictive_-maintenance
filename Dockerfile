@@ -2,20 +2,20 @@
 FROM python:3.10
 
 # Set our working directory as app
-WORKDIR /app 
-
+WORKDIR /code
 # Copy the requirements file into the container
-COPY requirements.txt .
+COPY ./requirements.txt /code/requirements.txt
 
 # Installing Python packages through requirements.txt file
-RUN pip install -r requirements.txt || true
+RUN pip install uvicorn==0.15.0
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt || true
 
 # Copy the rest of your application files (server.py, models, HTML, etc.) into the container
 COPY . .
 
 # Exposing port 5000 from the container
-EXPOSE 5000
+EXPOSE 7860
 
 # Starting the Python application
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "server:app"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
 
